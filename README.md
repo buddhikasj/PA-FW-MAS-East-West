@@ -1,4 +1,4 @@
-## 2 x VM-Series in Zones (3 NIC) with Public & Internal Load Balancers
+## 2 x VM-Series in Zones (3 NIC) with Public & Internal Load Balancers - MITESP Edited
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/wwce/azure-arm/master/Azure-Common-Deployments/v1/images/2fw_3nic_zone_intlb_extlb.png">
