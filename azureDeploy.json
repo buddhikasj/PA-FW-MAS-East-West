@@ -8,7 +8,7 @@
     "parameters": {
       "VNETOption": {
         "type": "string",
-        "defaultValue": "Create new MITESP VNET",
+        "defaultValue": "Create new VNET",
         "allowedValues": [
           "Create new VNET",
           "Use existing VNET"
@@ -26,7 +26,7 @@
       },
       "VNETName": {
         "type": "string",
-        "defaultValue": "vmseries-vnet",
+        "defaultValue": "MITESP-vmseries-vnet",
         "metadata": {
           "description": "Enter a name for the virtual network."
         }
