@@ -8,7 +8,7 @@
     "parameters": {
       "VNETOption": {
         "type": "string",
-        "defaultValue": "Create new VNET",
+        "defaultValue": "Create new MITESP VNET",
         "allowedValues": [
           "Create new VNET",
           "Use existing VNET"
