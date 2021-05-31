@@ -40,7 +40,7 @@
       },
       "subnetName-Management": {
         "type": "string",
-        "defaultValue": "mgmt-subnet",
+        "defaultValue": "MITESP-mgmt-subnet",
         "metadata": {
           "description": "Enter a subnet name for the firewall's management interface."
         }
