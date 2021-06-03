@@ -1,7 +1,9 @@
-## 2 x VM-Series in Zones (3 NIC) with Public & Internal Load Balancers - MITESP Edited
+## MIT ESP Paloalto Reference architecture Inbound firewall cluster deployment ARM Template
+
+### 2 x VM-Series in Zones (3 NIC) with Public Load Balancer
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/wwce/azure-arm/master/Azure-Common-Deployments/v1/images/2fw_3nic_zone_intlb_extlb.png">
+<img src="https://github.com/buddhikasj/PA_FW_MAS_Inbound/raw/main/Inbound-Azure.JPG">
 </p>
 
 ### Overview
