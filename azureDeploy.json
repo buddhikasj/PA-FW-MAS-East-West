@@ -18,10 +18,10 @@
       },
 	  "SELECT_FW_Cluester": {
         "type": "string",
-        "defaultValue": "Inbound",
+        "defaultValue": "EAST/WEST",
         "allowedValues": [
-          "Inbound",
-		  "EAST/WEST-Do not Use Here"
+          "Inbound-Do not use here",
+		  "EAST/WEST"
         ],
         "metadata": {
           "description": "If creating a new VNET, anything not specified in the template will be deleted."
@@ -36,7 +36,7 @@
       },
       "VNETName": {
         "type": "string",
-        "defaultValue": "ACUSFWPRD",
+        "defaultValue": "MTSSEAFWPRD",
         "metadata": {
           "description": "Enter a name for the virtual network."
         }
@@ -146,7 +146,7 @@
       },
       "FW1-Name": {
         "type": "string",
-        "defaultValue": "AZR-SEA-PAFW-EXT01",
+        "defaultValue": "AZR-SEA-PAFW-INT01",
         "metadata": {
           "description": "Enter a name for the first firewall."
         }
@@ -177,49 +177,49 @@
       },
       "FW1-IPManagement": {
         "type": "string",
-        "defaultValue": "10.10.254.38",
+        "defaultValue": "10.10.254.36",
         "metadata": {
           "description": "Enter a private IP address for firewall-1's management interface."
         }
       },
       "FW1-IPDataplane1": {
         "type": "string",
-        "defaultValue": "10.10.252.10",
+        "defaultValue": "10.10.252.4",
         "metadata": {
           "description": "Enter a private IP address for firewall-1's first dataplane interface."
         }
       },
       "FW1-IPDataplane2": {
         "type": "string",
-        "defaultValue": "10.10.254.6",
+        "defaultValue": "10.10.254.4",
         "metadata": {
           "description": "Enter a private IP address for firewall-1's second dataplane interface."
         }
       },
       "FW2-Name": {
         "type": "string",
-        "defaultValue": "AZR-SEA-PAFW-EXT02",
+        "defaultValue": "AZR-SEA-PAFW-INT01",
         "metadata": {
           "description": "Enter a name for the second firewall."
         }
       },
       "FW2-IPManagement": {
         "type": "string",
-        "defaultValue": "10.10.254.39",
+        "defaultValue": "10.10.254.37",
         "metadata": {
           "description": "Enter a private IP address for firewall-2's management interface."
         }
       },
       "FW2-IPDataplane1": {
         "type": "string",
-        "defaultValue": "10.10.252.11",
+        "defaultValue": "10.10.252.5",
         "metadata": {
           "description": "Enter a private IP address for firewall-2's first dataplane interface."
         }
       },
       "FW2-IPDataplane2": {
         "type": "string",
-        "defaultValue": "10.10.254.6",
+        "defaultValue": "10.10.254.5",
         "metadata": {
           "description": "Enter a private IP address for firewall-2's second dataplane interface."
         }
@@ -284,7 +284,7 @@
       },
       "acceleratedNetworking": {
         "type": "string",
-        "defaultValue": "enable",
+        "defaultValue": "enable (Only supported on PAN-OS 9.0 or greater)",
         "allowedValues": [
           "enable (Only supported on PAN-OS 9.0 or greater)",
           "disable"
@@ -832,7 +832,7 @@
         "dependsOn": [
           "CREATE_VNET",
           "CREATE_NSGS",
-          "CREATE_PUBLICLB"
+          "CREATE_INTERNALLB"
         ],
         "properties": {
           "mode": "Incremental",
@@ -921,12 +921,7 @@
                           "id": "[concat(resourceId(variables('global_vnet_resource_group'), 'Microsoft.Network/virtualNetworks', variables('global_vnet_name')), '/subnets/', variables('global_vnet_subnet1_name'))]"
                         },
                         "primary": true,
-                        "privateIPAddressVersion": "[variables('global_var_networkVersion')]",
-                        "loadBalancerBackendAddressPools": [
-                          {
-                            "id": "[concat(resourceId(variables('publicLb_resource_group'), 'Microsoft.Network/loadBalancers', variables('publicLb_name')), '/backendAddressPools/', variables('publicLb_pool_name'))]"
-                          }
-                        ]
+                        "privateIPAddressVersion": "[variables('global_var_networkVersion')]"
                       }
                     }
                   ],
@@ -957,7 +952,12 @@
                           "id": "[concat(resourceId(variables('global_vnet_resource_group'), 'Microsoft.Network/virtualNetworks', variables('global_vnet_name')), '/subnets/', variables('global_vnet_subnet2_name'))]"
                         },
                         "primary": true,
-                        "privateIPAddressVersion": "[variables('global_var_networkVersion')]"
+                        "privateIPAddressVersion": "[variables('global_var_networkVersion')]",
+                        "loadBalancerBackendAddressPools": [
+                          {
+                            "id": "[concat(resourceId(variables('internalLb_resource_group'), 'Microsoft.Network/loadBalancers', variables('internalLb_name')), '/backendAddressPools/', variables('internalLb_pool_name'))]"
+                          }
+                        ]
                       }
                     }
                   ],
@@ -1050,7 +1050,7 @@
         "dependsOn": [
           "CREATE_VNET",
           "CREATE_NSGS",
-          "CREATE_PUBLICLB"
+          "CREATE_INTERNALLB"
         ],
         "properties": {
           "mode": "Incremental",
@@ -1139,12 +1139,7 @@
                           "id": "[concat(resourceId(variables('global_vnet_resource_group'), 'Microsoft.Network/virtualNetworks', variables('global_vnet_name')), '/subnets/', variables('global_vnet_subnet1_name'))]"
                         },
                         "primary": true,
-                        "privateIPAddressVersion": "[variables('global_var_networkVersion')]",
-                        "loadBalancerBackendAddressPools": [
-                          {
-                            "id": "[concat(resourceId(variables('publicLb_resource_group'), 'Microsoft.Network/loadBalancers', variables('publicLb_name')), '/backendAddressPools/', variables('publicLb_pool_name'))]"
-                          }
-                        ]
+                        "privateIPAddressVersion": "[variables('global_var_networkVersion')]"
                       }
                     }
                   ],
@@ -1175,7 +1170,12 @@
                           "id": "[concat(resourceId(variables('global_vnet_resource_group'), 'Microsoft.Network/virtualNetworks', variables('global_vnet_name')), '/subnets/', variables('global_vnet_subnet2_name'))]"
                         },
                         "primary": true,
-                        "privateIPAddressVersion": "[variables('global_var_networkVersion')]"
+                        "privateIPAddressVersion": "[variables('global_var_networkVersion')]",
+                        "loadBalancerBackendAddressPools": [
+                          {
+                            "id": "[concat(resourceId(variables('internalLb_resource_group'), 'Microsoft.Network/loadBalancers', variables('internalLb_name')), '/backendAddressPools/', variables('internalLb_pool_name'))]"
+                          }
+                        ]
                       }
                     }
                   ],
