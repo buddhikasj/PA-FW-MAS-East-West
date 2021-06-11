@@ -21,7 +21,7 @@
         "defaultValue": "Inbound",
         "allowedValues": [
           "Inbound",
-		  "EAST/WEST"
+		  "EAST/WEST-Do not Use Here"
         ],
         "metadata": {
           "description": "If creating a new VNET, anything not specified in the template will be deleted."
@@ -36,77 +36,77 @@
       },
       "VNETName": {
         "type": "string",
-        "defaultValue": "MITESP-vmseries-vnet",
+        "defaultValue": "ACUSFWPRD",
         "metadata": {
           "description": "Enter a name for the virtual network."
         }
       },
       "VNETPrefix": {
         "type": "string",
-        "defaultValue": "10.0.0.0/16",
+        "defaultValue": "10.10.252.0/22",
         "metadata": {
           "description": "Enter a prefix for the virtual network."
         }
       },
       "subnetName-Management": {
         "type": "string",
-        "defaultValue": "MITESP-mgmt-subnet",
+        "defaultValue": "FWPRD-MGT",
         "metadata": {
           "description": "Enter a subnet name for the firewall's management interface."
         }
       },
       "subnetName-Dataplane1": {
         "type": "string",
-        "defaultValue": "untrust-subnet",
+        "defaultValue": "FWPRD-UNTRUST",
         "metadata": {
           "description": "Enter a subnet name for the firewall's first dataplane interface."
         }
       },
       "subnetName-Dataplane2": {
         "type": "string",
-        "defaultValue": "trust-subnet",
+        "defaultValue": "FWPRD-TRUST",
         "metadata": {
           "description": "Enter a subnet name for the firewall's second dataplane interface."
         }
       },
       "subnetName-InternalLB": {
         "type": "string",
-        "defaultValue": "lb-subnet",
+        "defaultValue": "FWPRD-LBINT",
         "metadata": {
           "description": "Enter the subnet name for the internal load balancer."
         }
       },
       "subnetPrefix-Management": {
         "type": "string",
-        "defaultValue": "10.0.0.0/24",
+        "defaultValue": "10.10.254.32/27",
         "metadata": {
           "description": "Enter a subnet prefix for the firewall's management interface."
         }
       },
       "subnetPrefix-Dataplane1": {
         "type": "string",
-        "defaultValue": "10.0.1.0/24",
+        "defaultValue": "10.10.252.0/23",
         "metadata": {
           "description": "Enter a subnet prefix for the firewall's first dataplane interface."
         }
       },
       "subnetPrefix-Dataplane2": {
         "type": "string",
-        "defaultValue": "10.0.2.0/24",
+        "defaultValue": "10.10.254.0/27",
         "metadata": {
           "description": "Enter a subnet prefix for the firewall's second dataplane interface."
         }
       },
       "subnetPrefix-InternalLB": {
         "type": "string",
-        "defaultValue": "10.0.3.0/24",
+        "defaultValue": "10.10.254.64/27",
         "metadata": {
           "description": "Enter a subnet prefix for the internal load balancer."
         }
       },
       "publicLBName": {
         "type": "string",
-        "defaultValue": "vmseries-public-lb",
+        "defaultValue": "SEAFWPRD-LBPUB",
         "metadata": {
           "description": "Enter a name for the public load balancer."
         }
@@ -120,14 +120,14 @@
       },
       "internalLBName": {
         "type": "string",
-        "defaultValue": "vmseries-internal-lb",
+        "defaultValue": "SEAFWPRD-LBINT",
         "metadata": {
           "description": "Enter a name for the internal load balancer."
         }
       },
       "internalLBAddress": {
         "type": "string",
-        "defaultValue": "10.0.3.100",
+        "defaultValue": "10.10.254.68",
         "metadata": {
           "description": "Enter the frontend private IP of the internal load balancer.  The address must be within the load balancer subnet prefix."
         }
@@ -146,7 +146,7 @@
       },
       "FW1-Name": {
         "type": "string",
-        "defaultValue": "vmseries-fw-vm1",
+        "defaultValue": "AZR-SEA-PAFW-EXT01",
         "metadata": {
           "description": "Enter a name for the first firewall."
         }
@@ -177,49 +177,49 @@
       },
       "FW1-IPManagement": {
         "type": "string",
-        "defaultValue": "10.0.0.4",
+        "defaultValue": "10.10.254.38",
         "metadata": {
           "description": "Enter a private IP address for firewall-1's management interface."
         }
       },
       "FW1-IPDataplane1": {
         "type": "string",
-        "defaultValue": "10.0.1.4",
+        "defaultValue": "10.10.252.10",
         "metadata": {
           "description": "Enter a private IP address for firewall-1's first dataplane interface."
         }
       },
       "FW1-IPDataplane2": {
         "type": "string",
-        "defaultValue": "10.0.2.4",
+        "defaultValue": "10.10.254.6",
         "metadata": {
           "description": "Enter a private IP address for firewall-1's second dataplane interface."
         }
       },
       "FW2-Name": {
         "type": "string",
-        "defaultValue": "vmseries-fw-vm2",
+        "defaultValue": "AZR-SEA-PAFW-EXT02",
         "metadata": {
           "description": "Enter a name for the second firewall."
         }
       },
       "FW2-IPManagement": {
         "type": "string",
-        "defaultValue": "10.0.0.5",
+        "defaultValue": "10.10.254.39",
         "metadata": {
           "description": "Enter a private IP address for firewall-2's management interface."
         }
       },
       "FW2-IPDataplane1": {
         "type": "string",
-        "defaultValue": "10.0.1.5",
+        "defaultValue": "10.10.252.11",
         "metadata": {
           "description": "Enter a private IP address for firewall-2's first dataplane interface."
         }
       },
       "FW2-IPDataplane2": {
         "type": "string",
-        "defaultValue": "10.0.2.5",
+        "defaultValue": "10.10.254.6",
         "metadata": {
           "description": "Enter a private IP address for firewall-2's second dataplane interface."
         }
@@ -238,7 +238,7 @@
       },
       "PANOSVersion": {
         "type": "string",
-        "defaultValue": "latest",
+        "defaultValue": "9.1.0",
         "allowedValues": [
           "latest",
           "9.1.0",
@@ -273,7 +273,7 @@
       },
       "OSDiskType": {
         "type": "string",
-        "defaultValue": "Standard_LRS",
+        "defaultValue": "Premium_LRS",
         "allowedValues": [
           "Standard_LRS",
           "Premium_LRS"
@@ -284,7 +284,7 @@
       },
       "acceleratedNetworking": {
         "type": "string",
-        "defaultValue": "disable",
+        "defaultValue": "enable",
         "allowedValues": [
           "enable (Only supported on PAN-OS 9.0 or greater)",
           "disable"
@@ -317,7 +317,7 @@
       },
       "NSGName": {
         "type": "string",
-        "defaultValue": "vmseries-nsg",
+        "defaultValue": "FWPRD-nsg",
         "metadata": {
           "description": "Enter a name for firewall NSG.  The name entered will have '-mgmt' appended for the mangement NSG and '-data' for the dataplane NSG."
         }
@@ -331,7 +331,7 @@
       },
       "username": {
         "type": "string",
-        "defaultValue": "paloalto",
+        "defaultValue": "admin",
         "metadata": {
           "description": "Enter the firewall's administrator username. DO NOT USE ADMIN OR ROOT."
         }
@@ -645,6 +645,7 @@
         "name": "CREATE_PUBLICLB",
         "apiVersion": "[variables('global_var_apiVersion')]",
         "resourceGroup": "[variables('publicLb_resource_group')]",
+        "condition": "[equals(variables('global_fwcluster_option'), 'Inbound')]",
         "properties": {
           "mode": "Incremental",
           "template": {
@@ -831,7 +832,6 @@
         "dependsOn": [
           "CREATE_VNET",
           "CREATE_NSGS",
-          "CREATE_INTERNALLB",
           "CREATE_PUBLICLB"
         ],
         "properties": {
@@ -1055,7 +1055,6 @@
         "dependsOn": [
           "CREATE_VNET",
           "CREATE_NSGS",
-          "CREATE_INTERNALLB",
           "CREATE_PUBLICLB"
         ],
         "properties": {
