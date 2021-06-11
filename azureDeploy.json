@@ -6,7 +6,7 @@
       "author": "Matt McLimans (mmclimans@paloaltonetworks.com)"
     },
     "parameters": {
-      "VNETOption": {
+      "VNETOption-v1.1": {
         "type": "string",
         "defaultValue": "Use existing VNET",
         "allowedValues": [
