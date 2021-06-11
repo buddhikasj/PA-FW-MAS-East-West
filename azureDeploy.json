@@ -745,7 +745,7 @@
         "name": "CREATE_INTERNALLB",
         "apiVersion": "[variables('global_var_apiVersion')]",
         "resourceGroup": "[variables('internalLb_resource_group')]",
-		"condition": "[equals(variables('global_fwcluster_option'), 'EAST/WEST')]",
+	"condition": "[equals(variables('global_fwcluster_option'), 'EAST/WEST')]",
         "dependsOn": [
           "CREATE_VNET"
         ],
