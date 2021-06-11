@@ -6,7 +6,7 @@
       "author": "Matt McLimans (mmclimans@paloaltonetworks.com)"
     },
     "parameters": {
-      "VNETOption-v1.1": {
+      "VNETOption": {
         "type": "string",
         "defaultValue": "Use existing VNET",
         "allowedValues": [
@@ -745,7 +745,7 @@
         "name": "CREATE_INTERNALLB",
         "apiVersion": "[variables('global_var_apiVersion')]",
         "resourceGroup": "[variables('internalLb_resource_group')]",
-	"condition": "[equals(variables('global_fwcluster_option'), 'EAST/WEST')]",
+        "condition": "[equals(variables('global_fwcluster_option'), 'EAST/WEST')]",
         "dependsOn": [
           "CREATE_VNET"
         ],
@@ -1175,7 +1175,7 @@
                           "id": "[concat(resourceId(variables('global_vnet_resource_group'), 'Microsoft.Network/virtualNetworks', variables('global_vnet_name')), '/subnets/', variables('global_vnet_subnet2_name'))]"
                         },
                         "primary": true,
-                        "privateIPAddressVersion": "[variables('global_var_networkVersion')]"                 
+                        "privateIPAddressVersion": "[variables('global_var_networkVersion')]"
                       }
                     }
                   ],
